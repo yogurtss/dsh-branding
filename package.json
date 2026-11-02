@@ -60,6 +60,10 @@
     "@deepseek-ai/cordis": "^4.0.5",
     "react": "^18.2.0"
   },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": { "optional": true },
+    "react": { "optional": true }
+  },
   "devDependencies": {
     "@deepseek-ai/cordis": "4.0.5",
     "@deepseek-ai/cordis-plugin-group": "1.0.5",

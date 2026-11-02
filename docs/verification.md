@@ -31,6 +31,10 @@
 5. 点击「一键恢复默认」，两个字段清空，页面显示还原成功，侧栏恢复官方原始图标和名称。
 6. 浏览器 error 日志为空。截图见本目录。
 
+从公开仓库 `github:yogurtss/dsh-branding#dev` 在第二个全新 DSH_HOME 安装成功，
+`--dump-config` 包含插件 bundle，Web profile 冷启动成功。Cordis 和 React 由宿主提供，
+声明为可选 peer，避免 CLI 管理的 profile 因未重复安装宿主运行时而产生误导性缺失警告。
+
 原生桌面、macOS/Linux、其他 Harness 版本及双浏览器实时同步未做端到端验收。没有调用模型或使用模型凭据。
 
 ## 命名
