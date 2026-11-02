@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1, "policy": "dsh-plugin-naming/v1",
+  "plugin": { "namespace": "yogurtss", "name": "branding", "coordinate": "yogurtss/branding", "packageName": "@yogurtss/dsh-branding" },
+  "names": {
+    "pluginNames": ["yogurtss-branding"], "loaderIds": ["yogurtss-branding"],
+    "services": [], "tools": [], "commands": [], "skills": [], "skillProviders": [], "events": [],
+    "settingsNamespaces": ["yogurtss-branding"], "routes": []
+  }
+}
