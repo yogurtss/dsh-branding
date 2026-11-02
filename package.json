@@ -1,7 +1,7 @@
 {
   "name": "@yogurtss/dsh-branding",
-  "version": "0.1.0-dev.2",
-  "description": "Custom sidebar name and sidebar/welcome logos with one-click restoration for DSH",
+  "version": "0.1.0-dev.3",
+  "description": "Custom DSH sidebar name, sidebar/welcome logos and browser favicon with one-click restoration",
   "type": "module",
   "license": "MIT",
   "repository": {

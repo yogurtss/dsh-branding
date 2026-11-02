@@ -28,6 +28,14 @@
 - 安装 dev.2 tarball 后冷启动隔离 Web profile，用之前已保存的品牌配置进入页面并点击「新建会话」：侧栏 24px 与欢迎页 34px 图片均加载成功。
 - 在设置点击「一键恢复默认」后，两处自定义图片都被移除，官方侧栏品牌和欢迎页原图标恢复；浏览器 error 日志为空。已更新本目录截图。
 
+## 0.1.0-dev.3：Web 标签栏 favicon
+
+- 精确宿主的 `apps/web/index.html` 提供两个静态 SVG favicon，分别带深浅色 media 条件，没有 favicon slot。
+- 插件使用可清理的 document effect，以已验证的 PNG 设置一个无媒体限制的 favicon；保留原始 link 节点和插入位置，恢复默认、配置不可用及卸载时原样还原。不会改写 PWA manifest 或 apple-touch-icon。
+- `pnpm verify` 通过（类型检查、构建、9 项测试）。新增测试覆盖原始节点身份/顺序/属性还原、两种主题、重复更新、无原始图标、无效配置及 HMR 清理。
+- 在隔离 Web profile 安装 dev.3，冷启动和刷新后读取实际浏览器 DOM，均只有一个 `image/png` favicon，href 与保存的 Logo 完全一致；点击「一键恢复默认」后恢复 `./favicon-dark.svg` 和 `./favicon.svg` 以及原 media 条件。浏览器 error 日志为空。
+- 验证针对实际浏览器文档中的 favicon 声明；内置浏览器截图不包含浏览器标签栏 chrome，未据此声称验证了所有浏览器的图标缓存行为。
+
 ## 真实宿主验收
 
 通过官方 CLI 在隔离 DSH_HOME 创建 Web profile，安装本插件 tarball，启动 DSH 0.2.1-rc.2。

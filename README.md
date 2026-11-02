@@ -1,14 +1,15 @@
 # DSH Branding
 
-在 DSH 的「设置 → 品牌设置」中更换左上角名称，以及侧栏和新会话欢迎页的 Logo，并一键恢复原来的 DSH 品牌。
+在 DSH 的「设置 → 品牌设置」中更换左上角名称，以及侧栏、新会话欢迎页和 Web 标签栏的 Logo，并一键恢复原来的 DSH 品牌。
 
-当前版本：`0.1.0-dev.2`（开发版）。已验证 **DeepSeek Harness 0.2.1-rc.2 / Windows Web profile**；其他宿主版本及原生桌面 profile 尚未验收。
+当前版本：`0.1.0-dev.3`（开发版）。已验证 **DeepSeek Harness 0.2.1-rc.2 / Windows Web profile**；其他宿主版本及原生桌面 profile 尚未验收。
 
 ## 功能
 
 - 自定义显示名称，最多 40 个字符，留空使用原来的名称。
 - 上传 PNG / JPEG / WebP Logo（最大 2 MB、最长边 4096 像素）。浏览器自动缩放到最长边 128 像素，并转换为保留透明度的 PNG。
-- 上传后先预览，点击「保存修改」后立即更新侧栏（包括收起状态）和新会话欢迎页中间的 Logo。两个位置共用同一张图片。
+- 上传后先预览，点击「保存修改」后更新侧栏（包括收起状态）、新会话欢迎页中间的 Logo 和 Web 标签栏图标（favicon）。三个位置共用同一张图片。
+- favicon 在插件读取已保存配置后替换；恢复默认或停用插件时，恢复宿主原有的深浅色图标及其媒体条件。浏览器可能短暂缓存标签栏图标。
 - 通过 DSH 原生设置服务保存，刷新页面、重启宿主后保留；同一 profile 的已连接浏览器通过原生配置通知同步。
 - 「使用默认 Logo」可单独还原 Logo；「一键恢复默认」立即同时还原名称和 Logo。
 - 还原、停用或卸载插件时，释放原生品牌 slot 的覆盖，重新显示宿主原有品牌。不会替换、删除或修改 DSH 安装文件。
@@ -26,7 +27,7 @@ dsh plugin --profile web add github:yogurtss/dsh-branding#dev
 
 重启对应的 DSH 实例，打开左下角「更多 → 设置 → 品牌设置」。本仓库提交完整 `lib/` 构建产物，无需批准依赖构建脚本。
 
-已有旧版时更新后重启，之前保存的 Logo 会自动用于新会话欢迎页，无需重新上传：
+已有旧版时更新后重启，之前保存的 Logo 会自动用于新会话欢迎页和 Web 标签栏，无需重新上传：
 
 ```sh
 dsh plugin --profile web update @yogurtss/dsh-branding
@@ -34,7 +35,7 @@ dsh plugin --profile web update @yogurtss/dsh-branding
 
 如果使用桌面版，应把 `web` 换成实际运行的 `desktop` profile，再完全退出并重新打开 DSH；此入口尚未做原生桌面验收。不要只安装到另一个 profile。
 
-插件定制侧栏名称、侧栏 Logo 和新会话欢迎页 Logo，不修改欢迎语、窗口标题、网页 favicon 或应用可执行文件名称。
+插件定制侧栏名称、侧栏 Logo、新会话欢迎页 Logo 和 Web favicon，不修改欢迎语、窗口标题、PWA 安装图标或应用可执行文件名称。
 
 ## 还原与卸载
 

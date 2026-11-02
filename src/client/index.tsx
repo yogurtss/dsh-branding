@@ -7,6 +7,7 @@ import type { PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
 import type { ConfigForm } from '@deepseek-ai/dsh-client-ui-settings/client'
 import { ENTRY_ID, readBranding, type Branding } from '../shared.js'
 import { Settings, styles } from './Settings.js'
+import { bindFavicon } from './favicon.js'
 import { en, zh, type Key } from './locales.js'
 
 declare module '@deepseek-ai/dsh-client-ui-slots' {
@@ -57,6 +58,7 @@ export function apply(ctx: Context): void {
   ctx.effect(() => ctx.locale.register(NS, { zh, en }))
   const form = ctx.configForms.get<Branding>(ENTRY_ID)
   ctx.effect(() => bindBrandSlots(ctx, form))
+  ctx.effect(() => bindFavicon(form, document))
   ctx.effect(() => {
     const style = document.createElement('style')
     style.dataset.plugin = '@yogurtss/dsh-branding'; style.textContent = styles
