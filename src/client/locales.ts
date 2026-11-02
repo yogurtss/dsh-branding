@@ -1,11 +1,11 @@
 export const zh = {
-  title: '品牌设置', intro: '自定义左上角的名称和 Logo。保存后立即生效，并在刷新或重启后保留。',
+  title: '品牌设置', intro: '自定义左上角名称，以及侧栏和新会话欢迎页的 Logo。保存后立即生效，并在刷新或重启后保留。',
   name: '显示名称', placeholder: '留空使用原来的 DSH 名称', nameHint: '最多 40 个字符。',
   logo: '品牌 Logo', upload: '上传 Logo', remove: '使用默认 Logo',
   uploadHint: '支持 PNG、JPEG、WebP，最大 2 MB。自动缩小并保留透明背景。',
   preview: '效果预览', defaultName: '默认 DSH 名称', defaultLogo: '默认 Logo',
   save: '保存修改', saving: '正在处理…', reset: '一键恢复默认',
-  resetHint: '同时恢复 DSH 原来的名称和 Logo。', saved: '已保存，左上角已更新。', restored: '已恢复原来的 DSH 名称和 Logo。',
+  resetHint: '同时恢复 DSH 原来的名称、侧栏 Logo 和新会话 Logo。', saved: '已保存，侧栏和新会话欢迎页已更新。', restored: '已恢复原来的 DSH 名称和所有品牌 Logo。',
   failed: '保存失败或设置已被其他窗口修改。请重新载入后再试。', reload: '重新载入设置',
   readOnly: '当前配置不可写。', loading: '正在读取设置…', unavailable: '品牌设置暂不可用，请检查插件是否启用。',
   uploadFailed: '无法读取图片，请选择有效的 PNG、JPEG 或 WebP 图片。',
@@ -14,13 +14,13 @@ export const zh = {
 }
 export type Key = keyof typeof zh
 export const en: Record<Key, string> = {
-  title: 'Branding', intro: 'Customize the name and logo in the top-left corner. Saved changes apply immediately and survive reloads and restarts.',
+  title: 'Branding', intro: 'Customize the sidebar name and the logo in both the sidebar and new-session welcome screen. Saved changes apply immediately and survive reloads and restarts.',
   name: 'Display name', placeholder: 'Leave blank for the original DSH name', nameHint: 'Up to 40 characters.',
   logo: 'Brand logo', upload: 'Upload logo', remove: 'Use default logo',
   uploadHint: 'PNG, JPEG or WebP, up to 2 MB. Automatically resized, preserving transparency.',
   preview: 'Preview', defaultName: 'Default DSH name', defaultLogo: 'Default logo',
   save: 'Save changes', saving: 'Working…', reset: 'Restore defaults',
-  resetHint: 'Restore both the original DSH name and logo.', saved: 'Saved. The sidebar has been updated.', restored: 'Original DSH name and logo restored.',
+  resetHint: 'Restore the original DSH name, sidebar logo and new-session logo.', saved: 'Saved. The sidebar and new-session welcome screen have been updated.', restored: 'Original DSH name and all brand logos restored.',
   failed: 'Save failed or another window changed these settings. Reload and try again.', reload: 'Reload settings',
   readOnly: 'This configuration is read-only.', loading: 'Loading settings…', unavailable: 'Branding settings are unavailable. Check that the plugin is enabled.',
   uploadFailed: 'Cannot read this image. Choose a valid PNG, JPEG or WebP image.',

@@ -1,7 +1,7 @@
 {
   "name": "@yogurtss/dsh-branding",
-  "version": "0.1.0-dev.1",
-  "description": "Custom sidebar name and logo with one-click restoration for DSH",
+  "version": "0.1.0-dev.2",
+  "description": "Custom sidebar name and sidebar/welcome logos with one-click restoration for DSH",
   "type": "module",
   "license": "MIT",
   "repository": {
@@ -43,6 +43,7 @@
         "@deepseek-ai/dsh-client-ui-renderer",
         "@deepseek-ai/dsh-client-ui-settings",
         "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-conversation",
         "@deepseek-ai/dsh-client-locale"
       ]
     }
@@ -61,8 +62,12 @@
     "react": "^18.2.0"
   },
   "peerDependenciesMeta": {
-    "@deepseek-ai/cordis": { "optional": true },
-    "react": { "optional": true }
+    "@deepseek-ai/cordis": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@deepseek-ai/cordis": "4.0.5",
@@ -71,6 +76,7 @@
     "@deepseek-ai/dsh-app-boot": "0.2.1-rc.2",
     "@deepseek-ai/dsh-brand": "0.2.1-rc.2",
     "@deepseek-ai/dsh-client-locale": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-client-ui-conversation": "0.2.1-rc.2",
     "@deepseek-ai/dsh-client-ui-renderer": "0.2.1-rc.2",
     "@deepseek-ai/dsh-client-ui-settings": "0.2.1-rc.2",
     "@deepseek-ai/dsh-client-ui-sidebar": "0.2.1-rc.2",

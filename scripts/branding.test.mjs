@@ -38,6 +38,7 @@ test('real SlotCore restores original occupants after reset, unavailable state, 
   core.register({ name: 'root', children: {
     'sidebar.brand.name': { kind: 'single', scope: 'root' },
     'sidebar.brand.mark': { kind: 'single', scope: 'root' },
+    'conversation.hero.brand.mark': { kind: 'single', scope: 'root' },
   } }, function Root({ renderSlot }) { return renderSlot('sidebar.brand.name', {}) })
   function OriginalName() { return 'original' }
   function OriginalLogo() { return 'original-logo' }
@@ -50,20 +51,34 @@ test('real SlotCore restores original occupants after reset, unavailable state, 
   const dispose = client.bindBrandSlots(ctx, form)
   const update = value => { snapshot = { ...snapshot, value }; for (const cb of listeners) cb() }
   assert.equal(core.entries('sidebar.brand.name').length, 1)
+  assert.equal(core.entries('conversation.hero.brand.mark').length, 0)
   update({ displayName: 'My DSH', logo: png })
   assert.equal(core.entriesOfSlot('sidebar.brand.name')[0].component({}).props.children, 'My DSH')
   assert.equal(core.entriesOfSlot('sidebar.brand.mark')[0].component({ size: 24 }).props.src, png)
+  const hero = core.entriesOfSlot('conversation.hero.brand.mark')[0].component({ size: 34, className: 'host-hero-fish' })
+  assert.equal(hero.props.src, png)
+  assert.equal(hero.props.width, 34)
+  assert.equal(hero.props.height, 34)
+  assert.equal(hero.props.className, 'host-hero-fish')
   update({ displayName: 'Changed', logo: png })
   assert.equal(core.entries('sidebar.brand.name').length, 2)
+  assert.equal(core.entries('conversation.hero.brand.mark').length, 1)
+  const replacement = png.replace('AAAANS', 'AAAANT')
+  update({ displayName: 'Changed', logo: replacement })
+  assert.equal(core.entries('conversation.hero.brand.mark').length, 1)
+  assert.equal(core.entriesOfSlot('conversation.hero.brand.mark')[0].component({ size: 34 }).props.src, replacement)
   update({ displayName: '', logo: '' })
   assert.equal(core.entriesOfSlot('sidebar.brand.name')[0].component, OriginalName)
   assert.equal(core.entriesOfSlot('sidebar.brand.mark')[0].component, OriginalLogo)
+  assert.equal(core.entries('conversation.hero.brand.mark').length, 0, 'empty slot reveals the host animated fish fallback')
   update({ displayName: 'Again', logo: png })
   snapshot = { ...snapshot, status: 'unavailable' }; for (const cb of listeners) cb()
   assert.equal(core.entriesOfSlot('sidebar.brand.name')[0].component, OriginalName)
+  assert.equal(core.entries('conversation.hero.brand.mark').length, 0)
   snapshot = { ...snapshot, status: 'ready' }; for (const cb of listeners) cb()
   dispose(); dispose()
   assert.equal(listeners.size, 0)
   assert.equal(core.entries('sidebar.brand.name').length, 1)
   assert.equal(core.entries('sidebar.brand.mark').length, 1)
+  assert.equal(core.entries('conversation.hero.brand.mark').length, 0)
 })

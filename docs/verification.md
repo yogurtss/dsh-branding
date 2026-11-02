@@ -20,6 +20,14 @@
 - React/jsdom 验证原子还原、保存被拒后不误报成功和订阅清理。
 - 上传类型/大小拒绝和解码失败后的 object URL 清理。
 
+## 0.1.0-dev.2：新会话 Logo 联动
+
+- 按同一精确宿主版本的 `conversation.hero.brand.mark` 扩展位接入欢迎页；保留宿主传入的 `size=34` 和 `className`。
+- 增补真实 SlotCore 回归：欢迎页图片更新、重复变更不积累注册、默认值释放 slot 以恢复宿主动画图标，以及 unavailable/dispose 清理。
+- `pnpm verify` 通过（host/client 类型检查、构建、6 项测试）。
+- 安装 dev.2 tarball 后冷启动隔离 Web profile，用之前已保存的品牌配置进入页面并点击「新建会话」：侧栏 24px 与欢迎页 34px 图片均加载成功。
+- 在设置点击「一键恢复默认」后，两处自定义图片都被移除，官方侧栏品牌和欢迎页原图标恢复；浏览器 error 日志为空。已更新本目录截图。
+
 ## 真实宿主验收
 
 通过官方 CLI 在隔离 DSH_HOME 创建 Web profile，安装本插件 tarball，启动 DSH 0.2.1-rc.2。

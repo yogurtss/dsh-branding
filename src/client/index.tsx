@@ -1,6 +1,7 @@
 import type { Context } from '@deepseek-ai/cordis'
 import type {} from '@deepseek-ai/dsh-client-ui-renderer/client'
 import type {} from '@deepseek-ai/dsh-client-ui-sidebar/client'
+import type {} from '@deepseek-ai/dsh-client-ui-conversation/client'
 import type {} from '@deepseek-ai/dsh-client-locale/client'
 import type { PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
 import type { ConfigForm } from '@deepseek-ai/dsh-client-ui-settings/client'
@@ -19,6 +20,7 @@ const NS = 'yogurtss.branding'
 export function bindBrandSlots(ctx: Context, form: ConfigForm<Branding>): () => void {
   let offName: (() => void) | undefined
   let offLogo: (() => void) | undefined
+  let offHeroLogo: (() => void) | undefined
   let previousName = ''
   let previousLogo = ''
   const sync = () => {
@@ -32,16 +34,22 @@ export function bindBrandSlots(ctx: Context, form: ConfigForm<Branding>): () => 
     }
     if (logo !== previousLogo) {
       offLogo?.(); offLogo = undefined; previousLogo = logo
+      offHeroLogo?.(); offHeroLogo = undefined
       if (logo) offLogo = ctx.slots.inject('sidebar.brand.mark', () => ctx.slots.register({
         name: 'sidebar.brand.mark', priority: -100,
       }, function BrandMark({ size }: PropsRuntime<'sidebar.brand.mark'>) {
         return <img src={logo} alt="" width={size} height={size} style={{ display: 'block', objectFit: 'contain' }} />
       }))
+      if (logo) offHeroLogo = ctx.slots.inject('conversation.hero.brand.mark', () => ctx.slots.register({
+        name: 'conversation.hero.brand.mark', priority: -100,
+      }, function HeroBrandMark({ size, className }: PropsRuntime<'conversation.hero.brand.mark'>) {
+        return <img src={logo} alt="" className={className} width={size} height={size} style={{ display: 'block', objectFit: 'contain' }} />
+      }))
     }
   }
   const unsubscribe = form.subscribe(sync)
   sync()
-  return () => { unsubscribe(); offName?.(); offLogo?.() }
+  return () => { unsubscribe(); offName?.(); offLogo?.(); offHeroLogo?.() }
 }
 
 /** Attach the native settings page and reversible sidebar overrides. */
